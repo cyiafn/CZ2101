@@ -138,17 +138,17 @@ def generateRandomArray(k, rang):
 if __name__ == "__main__":
 
     elements = [10,50,100,500,1000,5000,10000,50000]
+    
     ranges = [99, 99, 999, 999, 9999, 9999, 99999, 99999]
     for element in range(0, len(elements)):
-        for s in range(1,30):
+        for s in range(1,100):
             print(str(elements[element]) + " elements for S: " + str(s))
             os.environ["s"] = str(s)
             sortingTimeAr = []
             mergeKeys = []
             mergeHybridKeys = []
             sortingTimeHybrid = []
-            for i in range(20):
-                
+            for i in range(5):
                 ar = generateRandomArray(elements[element], ranges[element])
                 ar1 = copy.deepcopy(ar)
                 t0 = time.process_time()
@@ -166,6 +166,8 @@ if __name__ == "__main__":
 
 
             print("=========================================")
+            logging.info("===========================================")
+            logging.info(str(elements[element]) + " elements for S: " + str(s))
             logging.info("Average sorted time for merge sort: {:.7f}".format(sum(sortingTimeAr)/len(sortingTimeAr)))
             logging.info("Average key compare for merge sort: {:.1f}".format(sum(mergeKeys)/len(mergeKeys)))
             logging.info("Average sorted time for hybrid sort: {:.7f}".format(sum(sortingTimeHybrid)/len(sortingTimeHybrid)))
